@@ -2,11 +2,9 @@ package com.burcu.springBootZeroToHero.controller;
 
 import com.burcu.springBootZeroToHero.model.UserModel;
 import com.burcu.springBootZeroToHero.service.UserService;
-import com.sun.xml.bind.v2.TODO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -40,7 +38,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public void getUserByID(UUID id) {
-        // TODO: To be return
+    public UserModel getUser(UUID id) {
+       return  userService.getUser(id);
     }
 }

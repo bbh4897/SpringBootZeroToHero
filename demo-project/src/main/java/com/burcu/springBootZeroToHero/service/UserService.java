@@ -42,4 +42,9 @@ public class UserService {
 
          userRepository.delete(user);
     }
+
+    public UserModel getUser(UUID id) {
+        return userRepository.findUserModelById(id)
+                .orElseThrow(UserNotFoundException::new);
+    }
 }
