@@ -1,14 +1,18 @@
 package com.burcu.springBootZeroToHero.controller;
 
 import com.burcu.springBootZeroToHero.model.UserModel;
+import com.burcu.springBootZeroToHero.request.CreateUserRequest;
 import com.burcu.springBootZeroToHero.service.UserService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
+@Validated
 public class UserController {
 
     private final UserService userService;
@@ -23,8 +27,8 @@ public class UserController {
     }
 
     @PostMapping
-    public UserModel createUser(@RequestBody UserModel userModel) {
-        return userService.addUser(userModel);
+    public UserModel createUser(@Valid @RequestBody CreateUserRequest userRequest) {
+        return userService.addUser(userRequest);
     }
 
     @PutMapping("/{id}")
